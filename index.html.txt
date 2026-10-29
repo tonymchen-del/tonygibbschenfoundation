@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tony Gibbs Chen Foundation</title>
+
+<style>
+
+:root{
+    --primary:#103c56;
+    --accent:#d4af37;
+    --bg:#f7f9fb;
+    --card:#ffffff;
+    --text:#2b2b2b;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+}
+
+.hero{
+    background:linear-gradient(135deg,#103c56,#154f72);
+    color:white;
+    text-align:center;
+    padding:5rem 1.5rem;
+}
+
+.hero h1{
+    font-size:clamp(2rem,6vw,3.5rem);
+    font-weight:700;
+    margin-bottom:1rem;
+}
+
+.hero p{
+    max-width:700px;
+    margin:auto;
+    opacity:0.95;
+    font-size:1.05rem;
+}
+
+.container{
+    width:min(92%,680px);
+    margin:auto;
+    margin-top:-40px;
+    padding-bottom:40px;
+}
+
+.card{
+    background:var(--card);
+    border-radius:20px;
+    padding:2rem;
+    margin-bottom:1.25rem;
+    box-shadow:0 8px 30px rgba(0,0,0,0.08);
+}
+
+.section-title{
+    color:var(--primary);
+    margin-bottom:1rem;
+    font-size:1.3rem;
+    font-weight:700;
+}
+
+.counter{
+    text-align:center;
+    font-size:clamp(2.5rem,10vw,4.5rem);
+    font-weight:800;
+    color:var(--primary);
+    margin:1rem 0;
+}
+
+.counter-label{
+    text-align:center;
+    color:#666;
+    font-size:1rem;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.stat{
+    text-align:center;
+    background:#f5f7fa;
+    border-radius:14px;
+    padding:20px;
+}
+
+.stat-value{
+    font-size:1.4rem;
+    font-weight:700;
+    color:var(--primary);
+}
+
+.stat-label{
+    color:#666;
+    font-size:0.9rem;
+    margin-top:5px;
+}
+
+.mission p{
+    margin-bottom:15px;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#666;
+    font-size:0.9rem;
+}
+
+@media (max-width:480px){
+
+    .card{
+        padding:1.5rem;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding:4rem 1rem;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+    <h1>Tony Gibbs Chen Foundation</h1>
+    <p>
+        Supporting promising New Zealand students through sustainable
+        charitable giving and long-term investment.
+    </p>
+</section>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="section-title">
+            Foundation Value
+        </div>
+
+        <div id="counter" class="counter">
+            $200,000
+        </div>
+
+        <div class="counter-label">
+            Current Foundation Value
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <div class="stats-grid">
+
+            <div class="stat">
+                <div class="stat-value" id="annualGrant">$10,000</div>
+                <div class="stat-label">
+                    Annual Distribution (5%)
+                </div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-value">100%</div>
+                <div class="stat-label">
+                    Volunteer Operated
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card mission">
+
+        <div class="section-title">
+            Our Mission
+        </div>
+
+        <p>
+            The Tony Gibbs Chen Foundation invests its capital in diversified
+            index funds and distributes 5% of the Foundation's total value each
+            year to support promising New Zealand students.
+        </p>
+
+        <p>
+            The Foundation is intended to provide long-term, sustainable support
+            for students with exceptional potential who may not otherwise have
+            access to educational opportunities.
+        </p>
+
+    </div>
+
+</div>
+
+<footer>
+    © Tony Gibbs Chen Foundation
+</footer>
+
+<script>
+
+const startAmount = 200000;
+
+const foundationStartDate = new Date("2026-01-01");
+
+const today = new Date();
+
+const daysElapsed = Math.max(
+    0,
+    Math.floor(
+        (today - foundationStartDate) /
+        (1000 * 60 * 60 * 24)
+    )
+);
+
+const currentValue = startAmount + (daysElapsed * 100);
+
+document.getElementById("counter").textContent =
+    "$" + currentValue.toLocaleString("en-NZ");
+
+const annualGiving = currentValue * 0.05;
+
+document.getElementById("annualGrant").textContent =
+    "$" + Math.round(annualGiving).toLocaleString("en-NZ");
+
+</script>
+
+</body>
+</html>
